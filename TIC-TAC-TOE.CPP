@@ -111,10 +111,10 @@ bool gameover(){
             {
                 return true;
             }
-            else return false;
         }
     }
     // Case 3.1
+    //In case both player's are not winning but game is in continue phase....
     return false;
 }
 int main()
