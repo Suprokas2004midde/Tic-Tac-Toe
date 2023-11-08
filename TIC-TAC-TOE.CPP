@@ -78,12 +78,61 @@ void Replace_Number(){
         }
     }
 }
+bool gameover(){
+    //Case 1.1......(either player1 or player2 wins....)
+    for(int i=0;i<3;i++)
+    {
+        // if rtows are matched...
+        if(display_num[i][0]==display_num[i][1] && display_num[i][0]==display_num[i][2])
+        {
+            return false;
+        }
+        // if columns are matched.....
+        else if(display_num[0][i]==display_num[1][i] && display_num[0][i] == display_num[2][i])
+        {
+            return false;
+        }
+    }
+    if(display_num[0][0]==display_num[1][1] && display_num[0][0]==display_num[2][2])
+    {
+        return false;
+    }
+    else if (display_num[0][2]==display_num[1][1] && display_num[0][2]==display_num[2][0])
+    {
+        return false;
+    }
+    
+    //Case 2.1 (check wheather any place is empty or not... )
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            if(display_num[i][j]!='X' || display_num[i][j]!='O')
+            {
+                return true;
+            }
+            else return false;
+        }
+    }
+    // Case 3.1
+    return false;
+}
 int main()
 {
-    while(true){
+    while(gameover())
+    {
     Display_Main_Board();
     Replace_Number();
     Display_Main_Board();
     }
+    if(turn =='X')
+    {
+        cout<<"Player1 [X] win this match....!"<<endl;
+    }
+    else if(turn =='O')
+    {
+        cout<<"Player2 [O] win this match....!"<<endl;
+    }
+    cout<<"!!!...GAME OVER...!!!"<<endl;
     return 0;
 }
